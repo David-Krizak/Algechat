@@ -1,0 +1,30 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container form {
+  width: 100%;
+  max-width: 600px;
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+}
+
+.boja-label {
+  color: var(
+    --label-color
+  ); /* fancy feature mjenja boju labela preko propsa TODO maknuti mogucnost bijele jer se ne vidi label... */
+  margin-right: 0.5rem;
+}
+
+.color-picker input[type="color"] {
+  width: 70px;
+}
+.p-4.border.rounded {
+  backdrop-filter: blur(250px);
+}

@@ -1,0 +1,50 @@
+.Messages-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 33.33%; /* 1/3 of screen width */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  background-color: rgba(255, 255, 255, 0.3); /* Whitish background */
+  overflow-y: auto;
+  border-radius: 2;
+}
+
+.Messages-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.Message-content {
+  display: inline-block;
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 70%;
+  margin: 4px;
+}
+
+.Message-content.me {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
+
+.Message-content.other {
+  background-color: #f0f0f0;
+  color: black;
+  align-self: flex-start;
+}
+
+.username {
+  font-size: 0.8em;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.message-text {
+  margin-top: 4px;
+}
