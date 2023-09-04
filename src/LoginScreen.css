@@ -3,11 +3,22 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Optional: Add a light background to make the form stand out more */
 }
 
 .login-container form {
   width: 100%;
   max-width: 600px;
+  padding: 20px; /* Add some padding to the form */
+  border: 1px solid #e0e0e0; /* Add a subtle border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* White background for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
 .color-picker {
@@ -16,15 +27,17 @@
 }
 
 .boja-label {
-  color: var(
-    --label-color
-  ); /* fancy feature mjenja boju labela preko propsa TODO maknuti mogucnost bijele jer se ne vidi label... */
+  color: var(--label-color);
   margin-right: 0.5rem;
 }
 
 .color-picker input[type="color"] {
   width: 70px;
+  border: 1px solid #e0e0e0; /* Add a subtle border */
+  border-radius: 5px; /* Rounded corners */
 }
+
 .p-4.border.rounded {
-  backdrop-filter: blur(250px);
+  backdrop-filter: blur(10px); /* Adjusted the blur value to be less intense */
+  border-radius: 5px; /* Rounded corners */
 }

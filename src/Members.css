@@ -1,0 +1,36 @@
+.Members {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.Members-count {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+.Members-list {
+  list-style: none;
+  padding: 0;
+}
+
+.Member {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.Member.me .username {
+  font-weight: bold;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-size: 1em;
+}

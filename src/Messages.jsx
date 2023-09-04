@@ -23,12 +23,17 @@ function Messages({ messages, me, myId }) {
 }
 
 function Message({ message, me, myId }) {
-  const isMessageFromMe = message.id === myId;
+  console.log("Message ID:", message.id);
+  console.log("My ID:", myId);
+
+  const isMessageFromMe = message.member.id === myId;
+  console.log("Is message from me?", isMessageFromMe);
+
+  const messageText = message.data.data;
+
   const messageClassName = isMessageFromMe
     ? "Message-content me"
     : "Message-content other";
-
-  const messageText = message.data.data;
 
   return (
     <li className={messageClassName}>
