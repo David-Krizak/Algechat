@@ -1,24 +1,21 @@
 .login-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.8
-  ); /* Optional: Add a light background to make the form stand out more */
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .login-container form {
   width: 100%;
-  max-width: 600px;
-  padding: 20px; /* Add some padding to the form */
-  border: 1px solid #e0e0e0; /* Add a subtle border */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #fff; /* White background for the form */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .color-picker {
@@ -33,11 +30,11 @@
 
 .color-picker input[type="color"] {
   width: 70px;
-  border: 1px solid #e0e0e0; /* Add a subtle border */
-  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
 }
 
 .p-4.border.rounded {
-  backdrop-filter: blur(10px); /* Adjusted the blur value to be less intense */
-  border-radius: 5px; /* Rounded corners */
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
 }

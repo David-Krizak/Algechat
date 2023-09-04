@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import "./App.css";
 import Messages from "./Messages";
@@ -18,10 +17,6 @@ class App extends Component {
   };
 
   myId = "";
-
-  componentDidMount() {
-    this.initDrone();
-  }
 
   initDrone = () => {
     this.drone = new window.Scaledrone("boRWmgl9wbvM21l1", {
@@ -53,7 +48,7 @@ class App extends Component {
     });
 
     room.on("members", (members) => {
-      console.log("Received Members Data:", members); // Log the members dat
+      console.log("Received Members Data:", members);
       this.setState({ members });
     });
 
@@ -65,6 +60,17 @@ class App extends Component {
     room.on("member_leave", ({ id }) => {
       const members = this.state.members.filter((m) => m.id !== id);
       this.setState({ members });
+    });
+  };
+
+  handleLogin = (username, color) => {
+    const me = {
+      username,
+      color,
+    };
+    console.log("prijavljen?:", me);
+    this.setState({ me, loggedIn: true }, () => {
+      this.initDrone();
     });
   };
 
@@ -96,15 +102,6 @@ class App extends Component {
     });
   };
 
-  handleLogin = (username, color) => {
-    const me = {
-      username,
-      color,
-    };
-    console.log("prijavljen?:", me);
-    this.setState({ me, loggedIn: true });
-  };
-
   render() {
     const { loggedIn, members, messages, me } = this.state;
 
@@ -113,9 +110,19 @@ class App extends Component {
         <div className="App-content">
           {loggedIn ? (
             <>
-              <Members members={members} me={me} />
-              <Messages messages={messages} me={me} myId={this.myId} />
-              <Input onSendMessage={this.onSendMessage} />
+              <div className="sidebar">
+                <Members members={members} me={me} />
+              </div>
+              <div className="messages-container">
+                <Messages messages={messages} me={me} myId={this.myId} />
+              </div>
+              <div className="right-sidebar">
+                <div className="welcome-message">Dobrodošli {me.username}</div>
+                <button onClick={() => window.location.reload()}>Logout</button>
+              </div>
+              <div className="input-container">
+                <Input onSendMessage={this.onSendMessage} />
+              </div>
             </>
           ) : (
             <LoginScreen onLogin={this.handleLogin} />
