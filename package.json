@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "build:css": "tailwindcss build src/tailwind.css -o src/index.css",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "autoprefixer": "^10.4.15",
