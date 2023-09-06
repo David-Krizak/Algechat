@@ -1,50 +1,43 @@
-import React, { useRef, useEffect } from "react";
-import "./Messages.css";
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import React, { Component } from "react";
 
-function Messages({ messages, me, myId }) {
-  const bottomRef = useRef(null);
-
-  useEffect(() => {
-    if (bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
-  return (
-    <div className="Messages-container">
-      <ul className="Messages-list">
-        {messages.map((message, index) => (
-          <Message key={index} message={message} me={me} myId={myId} />
-        ))}
-        <div ref={bottomRef}></div>
-      </ul>
-    </div>
-  );
+class Messages extends Component {
+  render() {
+    const { messages, me, myId } = this.props;
+    return (
+      <div className="Messages-container">
+        <ul className="Messages-list">
+          {messages.map((message, index) => (
+            <Message key={index} message={message} me={me} myId={myId} />
+          ))}
+          <div ref={this.bottomRef}></div>
+        </ul>
+      </div>
+    );
+  }
 }
 
-function Message({ message, me, myId }) {
-  console.log("Message ID:", message.id);
-  console.log("My ID:", myId);
+class Message extends Component {
+  render() {
+    const { message, me, myId } = this.props;
+    const isMessageFromMe = message.member.id === myId;
+    const messageText = message.data.data;
+    const messageClassName = isMessageFromMe
+      ? "Message-content me"
+      : "Message-content other";
 
-  const isMessageFromMe = message.member.id === myId;
-  console.log("Is message from me?", isMessageFromMe);
-
-  const messageText = message.data.data;
-
-  const messageClassName = isMessageFromMe
-    ? "Message-content me"
-    : "Message-content other";
-
-  return (
-    <li className={messageClassName}>
-      {!isMessageFromMe && (
-        <div className="username">
-          {message.data.member.clientData.username}
-        </div>
-      )}
-      <div className="message-text">{messageText}</div>
-    </li>
-  );
+    return (
+      <li className={messageClassName}>
+        {!isMessageFromMe && (
+          <div className="username">
+            {message.data.member.clientData.username}
+          </div>
+        )}
+        <div className="message-text">{messageText}</div>
+      </li>
+    );
+  }
 }
 
 export default Messages;

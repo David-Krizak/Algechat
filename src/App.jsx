@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React, { Component } from "react";
-import "./App.css";
+import "./Index.css";
 import Messages from "./Messages";
 import Input from "./Input";
 import Members from "./Members";
@@ -106,22 +108,38 @@ class App extends Component {
     const { loggedIn, members, messages, me } = this.state;
 
     return (
-      <div className="App">
-        <div className="App-content">
+      <div
+        className="font-sans h-screen flex flex-col"
+        id="JEL OVO PROBLEM?=???">
+        {loggedIn && (
+          <div className="bg-purple-500 text-white p-4">
+            <div className="text-lg">Dobrodošli {me.username}</div>
+            <button
+              onClick={() => window.location.reload()}
+              className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded mt-2">
+              Odjava
+            </button>
+          </div>
+        )}
+        <div
+          className="flex-grow flex"
+          id="iz nekog razloga login prim flex od ovog classa <<">
           {loggedIn ? (
             <>
-              <div className="sidebar">
+              <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
                 <Members members={members} me={me} />
               </div>
-              <div className="messages-container">
+              <div className="flex-grow flex flex-col p-4">
                 <Messages messages={messages} me={me} myId={this.myId} />
+                <div className="mt-4 border-t border-gray-300 pt-4">
+                  <Input onSendMessage={this.onSendMessage} />
+                </div>
               </div>
-              <div className="right-sidebar">
-                <div className="welcome-message">Dobrodošli {me.username}</div>
-                <button onClick={() => window.location.reload()}>Logout</button>
-              </div>
-              <div className="input-container">
-                <Input onSendMessage={this.onSendMessage} />
+              <div className="w-1/5 bg-gray-100 p-4 flex flex-col items-center border-l border-gray-300">
+                <div className="text-lg mb-4">Dobrodošli {me.username}</div>
+                <p className="mt-4 text-gray-600">
+                  Lorem ipsum...BLA BLA placeholder zasad
+                </p>
               </div>
             </>
           ) : (

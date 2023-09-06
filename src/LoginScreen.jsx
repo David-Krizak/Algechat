@@ -1,10 +1,15 @@
+/* eslint-disable react/prop-types */
+
 import React, { Component } from "react";
-import "./LoginScreen.css";
+import "./tailwind.css";
+import "./Index.css";
+
 class LoginScreen extends Component {
   state = {
     username: "",
-    color: "#000000", 
+    color: "#000000",
   };
+
   handleUsernameChange = (event) => {
     this.setState({ username: event.target.value });
   };
@@ -12,7 +17,6 @@ class LoginScreen extends Component {
   handleColorChange = (event) => {
     this.setState({ color: event.target.value });
   };
-
 
   handleLogin = (event) => {
     event.preventDefault();
@@ -30,47 +34,44 @@ class LoginScreen extends Component {
   };
 
   render() {
+    const { username, color } = this.state;
+
     return (
-      <div className="login-container">
-        <form className="p-4 border rounded">
-          <h2 className="mb-4">Login</h2>
-          <div className="mb-3">
+      <div className="flex justify-center items-center h-screen" id="PRVI DIV">
+        <div className="bg-white bg-opacity-60 p-8 rounded-xl shadow-xl w-96 border border-gray-300">
+          <h2 className="mb-4 text-2xl font-bold text-center">Login</h2>
+          <div className="mb-4">
             <input
-              className="form-control"
+              className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
               type="text"
               placeholder="Username"
-              value={this.state.username}
+              value={username}
               onChange={this.handleUsernameChange}
               autoFocus
             />
           </div>
-          <div className="mb-3 color-picker">
+          <div className="mb-4 flex items-center">
             <label
               htmlFor="colorPicker"
-              className="form-label boja-label"
-              style={{ "--label-color": this.state.color }} 
-            >
+              className="mr-2 text-gray-700"
+              style={{ color: color }}>
               Boja:
             </label>
             <input
-              className="form-control"
+              className="border rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
               type="color"
               id="colorPicker"
-              value={this.state.color}
+              value={color}
               onChange={this.handleColorChange}
             />
           </div>
           <button
-            className="btn btn-primary mt-3"
+            className="w-full p-2 text-white bg-purple-500 hover:bg-purple-600 rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
             type="submit"
-            onClick={this.handleLogin}
-            style={{
-              backgroundColor: this.state.color,
-              borderColor: this.state.color,
-            }}>
+            onClick={this.handleLogin}>
             Pridruži se
           </button>
-        </form>
+        </div>
       </div>
     );
   }
