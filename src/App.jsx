@@ -130,7 +130,7 @@ class App extends Component {
               <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
                 <Members members={members} me={me} />
               </div>
-              <div className="flex-grow flex flex-col p-4">
+              <div className="flex-grow flex flex-col p-4 ">
                 <Messages messages={messages} me={me} myId={this.myId} />
                 <div className="mt-4 border-t border-gray-300 pt-4">
                   <Input onSendMessage={this.onSendMessage} />

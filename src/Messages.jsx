@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
+import "./Index.css";
+import "./tailwind.css";
 
 class Messages extends Component {
   render() {
@@ -23,18 +25,25 @@ class Message extends Component {
     const { message, me, myId } = this.props;
     const isMessageFromMe = message.member.id === myId;
     const messageText = message.data.data;
-    const messageClassName = isMessageFromMe
-      ? "Message-content me"
-      : "Message-content other";
 
     return (
-      <li className={messageClassName}>
-        {!isMessageFromMe && (
-          <div className="username">
-            {message.data.member.clientData.username}
-          </div>
-        )}
-        <div className="message-text">{messageText}</div>
+      <li
+        className={`flex ${
+          isMessageFromMe ? "justify-end" : "justify-start"
+        } p-2`}>
+        <div
+          className={`flex-none rounded-lg p-2 ${
+            isMessageFromMe
+              ? "bg-blue-500 text-white"
+              : "bg-gray-300 text-black"
+          }`}>
+          {!isMessageFromMe && (
+            <div className="text-xs text-gray-600 mb-1">
+              {message.data.member.clientData.username}
+            </div>
+          )}
+          <div className="text-sm">{messageText}</div>
+        </div>
       </li>
     );
   }

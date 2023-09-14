@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import React, { Component } from "react";
 
 class Input extends Component {
@@ -23,7 +21,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div className="flex">
+      <div className="flex fixed bottom-0 w-full">
         <form onSubmit={this.onSubmit} className="flex-grow flex">
           <input
             onChange={this.onChange}
