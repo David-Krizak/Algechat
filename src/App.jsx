@@ -121,11 +121,12 @@ class App extends Component {
             </button>
           </div>
         )}
-        <div
-          className="flex-grow flex"
-          id="iz nekog razloga login prim flex od ovog classa <<">
-          {loggedIn ? (
-            <>
+
+        {loggedIn ? (
+          <>
+            <div
+              className="flex-grow flex"
+              id="iz nekog razloga login prim flex od ovog classa <<">
               <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
                 <Members members={members} me={me} />
               </div>
@@ -141,11 +142,11 @@ class App extends Component {
                   Lorem ipsum...BLA BLA placeholder zasad
                 </p>
               </div>
-            </>
-          ) : (
-            <LoginScreen onLogin={this.handleLogin} />
-          )}
-        </div>
+            </div>
+          </>
+        ) : (
+          <LoginScreen onLogin={this.handleLogin} />
+        )}
       </div>
     );
   }
