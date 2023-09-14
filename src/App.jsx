@@ -124,15 +124,13 @@ class App extends Component {
 
         {loggedIn ? (
           <>
-            <div
-              className="flex-grow flex"
-              id="iz nekog razloga login prim flex od ovog classa <<">
+            <div className="flex-grow flex">
               <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
                 <Members members={members} me={me} />
               </div>
               <div className="flex-grow flex flex-col p-4 ">
                 <Messages messages={messages} me={me} myId={this.myId} />
-                <div className="mt-4 border-t border-gray-300 pt-4">
+                <div className="mt-4 border-t border-gray-300 pt-4 w-full">
                   <Input onSendMessage={this.onSendMessage} />
                 </div>
               </div>
