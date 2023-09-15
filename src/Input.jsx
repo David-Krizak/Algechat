@@ -21,7 +21,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div className="flex fixed bottom-0 ">
+      <div className="flex bottom-0 ">
         <form onSubmit={this.onSubmit} className="flex-grow flex  ">
           <input
             onChange={this.onChange}

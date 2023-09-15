@@ -1,19 +1,40 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import "./Index.css";
 import "./tailwind.css";
 
 class Messages extends Component {
+  constructor(props) {
+    super(props);
+    this.messagesContainerRef = React.createRef();
+  }
+
+  scrollToBottom = () => {
+    const container = this.messagesContainerRef.current;
+    if (container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  };
+
+  componentDidMount() {
+    this.scrollToBottom();
+  }
+
+  componentDidUpdate(prevProps) {
+    // Check if new messages have been added
+    if (prevProps.messages.length !== this.props.messages.length) {
+      this.scrollToBottom();
+    }
+  }
+
   render() {
     const { messages, me, myId } = this.props;
+
     return (
-      <div className="Messages-container">
+      <div className="Messages-container" ref={this.messagesContainerRef}>
         <ul className="Messages-list">
           {messages.map((message, index) => (
             <Message key={index} message={message} me={me} myId={myId} />
           ))}
-          <div ref={this.bottomRef}></div>
         </ul>
       </div>
     );

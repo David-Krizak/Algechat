@@ -108,9 +108,7 @@ class App extends Component {
     const { loggedIn, members, messages, me } = this.state;
 
     return (
-      <div
-        className="font-sans h-screen flex flex-col"
-        id="JEL OVO PROBLEM?=???">
+      <div className="font-sans h-screen flex flex-col">
         {loggedIn && (
           <div className="bg-purple-500 text-white p-4">
             <div className="text-lg">Dobrodošli {me.username}</div>
@@ -128,9 +126,11 @@ class App extends Component {
               <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
                 <Members members={members} me={me} />
               </div>
-              <div className="flex-grow flex flex-col p-4 ">
-                <Messages messages={messages} me={me} myId={this.myId} />
-                <div className="mt-4 border-t border-gray-300 pt-4 w-full">
+              <div className="flex-grow flex flex-col p-4 h-full">
+                <div className="flex-grow overflow-y-auto">
+                  <Messages messages={messages} me={me} myId={this.myId} />
+                </div>
+                <div className="flex-none mt-4 border-t border-gray-300 pt-4 w-full">
                   <Input onSendMessage={this.onSendMessage} />
                 </div>
               </div>
