@@ -20,7 +20,6 @@ class Messages extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // Check if new messages have been added
     if (prevProps.messages.length !== this.props.messages.length) {
       this.scrollToBottom();
     }

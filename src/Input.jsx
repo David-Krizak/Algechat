@@ -21,8 +21,8 @@ class Input extends Component {
 
   render() {
     return (
-      <div className="flex bottom-0 ">
-        <form onSubmit={this.onSubmit} className="flex-grow flex  ">
+      <div className="flex bottom-0">
+        <form onSubmit={this.onSubmit} className="flex-grow flex">
           <input
             onChange={this.onChange}
             value={this.state.text}

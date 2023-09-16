@@ -6,6 +6,8 @@ import Messages from "./Messages";
 import Input from "./Input";
 import Members from "./Members";
 import LoginScreen from "./LoginScreen";
+import PingComponent from "./PingComponent";
+import Vrijeme from "./Vrijeme";
 
 class App extends Component {
   state = {
@@ -121,27 +123,28 @@ class App extends Component {
         )}
 
         {loggedIn ? (
-          <>
-            <div className="flex-grow flex">
-              <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
-                <Members members={members} me={me} />
+          <div className="flex-grow flex">
+            <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
+              <Members members={members} me={me} />
+            </div>
+            <div className="flex-grow flex flex-col p-4 h-full">
+              <div className="flex-grow overflow-y-auto">
+                <Messages messages={messages} me={me} myId={this.myId} />
               </div>
-              <div className="flex-grow flex flex-col p-4 h-full">
-                <div className="flex-grow overflow-y-auto">
-                  <Messages messages={messages} me={me} myId={this.myId} />
-                </div>
-                <div className="flex-none mt-4 border-t border-gray-300 pt-4 w-full">
-                  <Input onSendMessage={this.onSendMessage} />
-                </div>
-              </div>
-              <div className="w-1/5 bg-gray-100 p-4 flex flex-col items-center border-l border-gray-300">
-                <div className="text-lg mb-4">Dobrodošli {me.username}</div>
-                <p className="mt-4 text-gray-600">
-                  Lorem ipsum...BLA BLA placeholder zasad
-                </p>
+              <div className="flex-none mt-4 border-t border-gray-300 pt-4 w-full">
+                <Input onSendMessage={this.onSendMessage} />
               </div>
             </div>
-          </>
+            <div className="w-1/5 bg-gray-100 p-4 flex flex-col items-center border-l border-gray-300">
+              <div className="text-lg mb-4">Dobrodošli {me.username}</div>
+              <div className="w-full max-w-xs">
+                <PingComponent />
+              </div>
+              <div className="w-full max-w-xs">
+                <Vrijeme />
+              </div>
+            </div>
+          </div>
         ) : (
           <LoginScreen onLogin={this.handleLogin} />
         )}
