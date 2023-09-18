@@ -112,11 +112,11 @@ class App extends Component {
     return (
       <div className="font-sans h-screen flex flex-col">
         {loggedIn && (
-          <div className="bg-purple-500 text-white p-4">
+          <div className="bg-purple-500 text-white py-2 px-4 flex justify-between">
             <div className="text-lg">Dobrodošli {me.username}</div>
             <button
               onClick={() => window.location.reload()}
-              className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded mt-2">
+              className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded">
               Odjava
             </button>
           </div>
@@ -127,7 +127,7 @@ class App extends Component {
             <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
               <Members members={members} me={me} />
             </div>
-            <div className="flex-grow flex flex-col p-4 h-full">
+            <div class="flex-grow flex flex-col p-4 h-full overflow-y-auto">
               <div className="flex-grow overflow-y-auto">
                 <Messages messages={messages} me={me} myId={this.myId} />
               </div>
