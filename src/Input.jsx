@@ -11,12 +11,19 @@ class Input extends Component {
   };
 
   onSubmit = (e) => {
+    e.preventDefault(); // prevent reload kad submitam message jer je form
     const { onSendMessage } = this.props;
     const { text } = this.state;
-    e.preventDefault();
 
-    this.setState({ text: "" });
-    onSendMessage(text);
+    // ako je poruka prazna postavi state texta na "prazna poruka" i posalji,zatim set state na empty opet
+    if (!text.trim()) {
+      this.setState({ text: "Prazna poruka" }); // cross reference error ako ne postavimo text set state
+      onSendMessage("Prazna poruka");
+      this.setState({ text: "" });
+    } else {
+      this.setState({ text: "" });
+      onSendMessage(text);
+    }
   };
 
   render() {

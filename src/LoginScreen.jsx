@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import React, { Component } from "react";
 import "./tailwind.css";
 import "./Index.css";
@@ -8,6 +7,7 @@ class LoginScreen extends Component {
   state = {
     username: "",
     color: "#000000",
+    error: "", // var za error
   };
 
   handleUsernameChange = (event) => {
@@ -21,12 +21,22 @@ class LoginScreen extends Component {
   handleLogin = (event) => {
     event.preventDefault();
     const { username, color } = this.state;
+
+    if (username.length > 16) {
+      this.setState({
+        error: "Korisničko ime mora imati manje od 17 znakova.",
+      });
+      return;
+    } else {
+      this.setState({ error: "" });
+    }
+
     if (!username) {
-      window.alert("Odaberite username!");
+      this.setState({ error: "Odaberite username!" });
       return;
     }
     if (!color) {
-      window.alert("Odaberite boju!");
+      this.setState({ error: "Odaberite boju!" });
       return;
     }
 
@@ -34,12 +44,14 @@ class LoginScreen extends Component {
   };
 
   render() {
-    const { username, color } = this.state;
+    const { username, color, error } = this.state;
 
     return (
       <div className="flex justify-center items-center h-screen" id="PRVI DIV">
         <div className="bg-white bg-opacity-60 p-8 rounded-xl shadow-xl w-96 border border-gray-300">
           <h2 className="mb-4 text-2xl font-bold text-center">Login</h2>
+          {error && <p className="text-red-500 mb-2">{error}</p>}{" "}
+          {/* Prikaz errora ako ima error*/}
           <div className="mb-4">
             <input
               className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-purple-600"
