@@ -127,7 +127,7 @@ class App extends Component {
             <div className="w-1/5 bg-gray-100 p-4 border-r border-gray-300">
               <Members members={members} me={me} />
             </div>
-            <div class="flex-grow flex flex-col p-4 h-full overflow-y-auto">
+            <div className="flex-grow flex flex-col p-4 h-full overflow-y-auto">
               <div className="flex-grow overflow-y-auto">
                 <Messages messages={messages} me={me} myId={this.myId} />
               </div>
